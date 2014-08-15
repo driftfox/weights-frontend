@@ -10,7 +10,7 @@ weightsControllers
         $scope.todaysDate = $filter('date')(date, "yyyy-MM-dd");
         
         $scope.showUserWeights = function(){
-            var getString = '../php/service.php?service=weightsList&user_id=' + $scope.userId;
+            var getString = 'php/service.php?service=weightsList&user_id=' + $scope.userId;
             $http.get(getString, {cache: true}).success(function(data){
                 $scope.exercises = data;
             });
@@ -19,10 +19,11 @@ weightsControllers
 
         $scope.updateDate = function(){
             $scope.todaysDate = $scope.todaysYear + "-" + $scope.todaysMonth + "-" + $scope.todaysDay;
+            console.log($scope.todaysDate);
         }
 
         $scope.showGraph = function(userId, exerciseId, exerciseName){
-            var getString = '../php/service.php?service=weightHistory&user_id=' + userId + '&weight_id=' + exerciseId;
+            var getString = 'php/service.php?service=weightHistory&user_id=' + userId + '&weight_id=' + exerciseId;
             $http.get(getString, {cache: true}).success(function(data){
                 // Prepare data for chart.js
                 var chartLabels = [],
@@ -32,6 +33,8 @@ weightsControllers
                     chartLabels.push(entry.date);
                     chartData.push(parseInt(entry.weight));
                 });
+                console.log(chartLabels);
+                console.log(chartData);
 
                 //Get the context of the canvas element we want to select
                 $('body').addClass('show-chart');
@@ -70,7 +73,7 @@ weightsControllers
 
         $scope.addSingleExercise = function(userId, exerciseId, weight, date){
             // Add exercise to db as soon as user chooses weight in dropdown
-            var getString = '../php/service.php?service=addWeight&user_id=' + userId + '&weight_id=' + exerciseId + '&weight=' + weight + '&date=' + date;
+            var getString = 'php/service.php?service=addWeight&user_id=' + userId + '&weight_id=' + exerciseId + '&weight=' + weight + '&date=' + date;
             $http.get(getString, {cache : false}).success(function(data){});
         }
     });

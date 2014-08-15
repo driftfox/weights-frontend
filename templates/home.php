@@ -21,17 +21,19 @@ for($i=0;$i<=500;$i+=5){
             </tr>
             <tr>
                 <th class="lift-name">Exercise</th>
-                <th class="previous-weight">Previous</th>
+                <th class="prev-weight-and-reps">Previous</th>
                 <th class="weight-dropdown">Today</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="exercise in exercises" class="day-{{exercise.type}}">
                 <td class="exercise">
-                    <div class="lift-name" ng-click="showGraph(exercise.userData.user_id, exercise.id)">{{exercise.name}}</div>
-                    <div class="set-details">{{exercise.repetitions}}</div>
+                    <div class="lift-name" ng-click="showGraph(exercise.userData.user_id, exercise.id, exercise.name)">{{exercise.name}}</div>
                 </td>
-                <td class="previous-weight">{{exercise.userData.weight}}</td>
+                <td class="prev-weight-and-reps">
+                    <div class="previous-weight">{{exercise.userData.weight}}</div>
+                    <div class="reps">{{exercise.repetitions}}</div>
+                </td>
                 <td class="weight-dropdown">
                     <select name="{{exercise.id}}" id="ex{{exercise.name|nospaces}}" ng-model="weight" ng-change="addSingleExercise(userId, exercise.id, weight, todaysDate)">
                         <?php echo $weightDropdown; ?>
