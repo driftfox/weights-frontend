@@ -15,6 +15,7 @@ for($i=0;$i<=500;$i+=5){
                     <!-- <span class="name">Name:</span> -->
                     <select name="user_id" class="user-id" ng-model="userId" ng-change="showUserWeights()">
                         <option value="2">Russell</option>
+                        <option value="3">Tyler</option>
                         <option value="1">Andrew</option>
                     </select>
                 </td>
