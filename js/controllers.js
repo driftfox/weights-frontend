@@ -1,6 +1,6 @@
 var weightsControllers = angular.module('weightsControllers', []);
 weightsControllers
-    .controller('WeightListCtrl', function ($scope, $http, $filter) {
+    .controller('WeightListController', function ($scope, $http, $filter) {
         var date = new Date();
         $scope.userId = 2;
         $scope.weight = 0;
@@ -69,6 +69,13 @@ weightsControllers
                     }]
                 });
             });
+        }
+
+        $scope.setToPreviousWeight = function(previousWeight, weight){
+            console.log(weight);
+            console.log(previousWeight);
+            // $scope.weight = 10;
+            console.log($scope);
         }
 
         $scope.addSingleExercise = function(userId, exerciseId, weight, date){

@@ -19,10 +19,10 @@
         }
     });
 
-    /* Hide Chart on click */
-    $('#chartContainer svg').on("click", function(){
-        alert('close');
-        $('body').removeClass('show-chart');
-    });
+    // Hide Chart on click 
+    // $('#chartContainer svg').on("click", function(){
+    //     alert('close');
+    //     $('body').removeClass('show-chart');
+    // });
 
 })();
