@@ -41,7 +41,10 @@ body.show-chart{overflow: hidden;}
 }
 #weightTable tr.day-A{background: #b1e6f4; }
 #weightTable tr.day-B{background: #cbeff8; }
-#weightTable tr.day-AB{background: url(../img/day-ab-bg.png);}
+#weightTable.show-a-days tr.day-AB{background: #b1e6f4;}
+#weightTable.show-b-days tr.day-AB{background: #cbeff8;}
+#weightTable.show-a-days tr.day-B,
+#weightTable.show-b-days tr.day-A{display: none;}
 #weightTable tr.date{color: #000;text-shadow: none;}
 #weightTable tr.date{text-align: center;}
 #weightTable tr.date input{width: 110px;}

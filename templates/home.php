@@ -1,6 +1,6 @@
 <?php
 
-$weightDropdown = "<option value=\"0\">-</option>\n";
+$weightDropdown = "";
 for($i=0;$i<=500;$i+=5){
     $weightDropdown .= "<option value=\"$i\">$i</option>\n";
 }
@@ -32,7 +32,7 @@ for($i=0;$i<=500;$i+=5){
                     <div class="lift-name" ng-click="showGraph(exercise.userData.user_id, exercise.id, exercise.name)">{{exercise.name}}</div>
                 </td>
                 <td class="prev-weight-and-reps">
-                    <div class="previous-weight" ng-click="setToPreviousWeight(exercise.userData.weight, weight)">{{exercise.userData.weight}}</div>
+                    <div class="previous-weight">{{exercise.userData.weight}}</div>
                     <div class="reps">{{exercise.repetitions}}</div>
                 </td>
                 <td class="weight-dropdown">
