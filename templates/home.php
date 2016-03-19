@@ -7,7 +7,7 @@ for($i=0;$i<=500;$i+=5){
 
 ?>
 
-<form action="submit.php" id="weightsForm" method="GET" ng-controller="WeightListController">
+<form id="weightsForm" ng-controller="WeightListController">
     <table id="weightTable" cellspacing="0" cellpadding="0" border="0">
         <thead>
             <tr>
@@ -112,3 +112,14 @@ for($i=0;$i<=500;$i+=5){
 
 <div id="chartContainer">
 </div> <!-- #chartContainer -->
+
+<div id="workoutCounter" ng-controller="counterController">
+    <div class="clock"  ng-click="resetCounterTime()">{{counterTime|sectominsec}}</div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-default">1</button>
+        <button type="button" class="btn btn-default">2</button>
+        <button type="button" class="btn btn-default">3</button>
+        <button type="button" class="btn btn-default">4</button>
+        <button type="button" class="btn btn-default">5</button>
+    </div><!-- .btn-group -->
+</div> 

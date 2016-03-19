@@ -31,9 +31,9 @@ textarea {resize: vertical; }
    Author's custom styles
    ========================================================================== */
 
-html,
-body{ margin:0; padding:0; height:100%; width:100%; }
+body{ margin: 0 0 70px; }
 body.show-chart{overflow: hidden;}
+/* Weights Form */
 #weightsForm{width: 100%;}
 #weightTable{width: 100%;font-size: 18px;
     -moz-box-sizing: border-box;
@@ -62,9 +62,22 @@ body.show-chart{overflow: hidden;}
 #weightTable tr td div.previous-weight{font-size: 26px;color: #000;margin-bottom: -7px;}
 #weightTable tr td div.reps{font-size: 14px;color: #000;}
 #weightTable tr td.name,
+/* Charts */
 #chartContainer{top: 0;left: 0;width: 100%;height: 100%;display: none;background: #fff;}
 body.show-chart #chartContainer{position: fixed;overflow: hidden;display: block;}
-
+/* Time / Set Counter */
+#workoutCounter {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.85);
+}
+#workoutCounter .clock{
+    margin: 10px 30px;
+    font-size: 2em;
+    float: left;
+}
 
 /* ==========================================================================
    Helper classes

@@ -85,6 +85,27 @@ weightsControllers
             $http.get(getString, {cache : false}).success(function(data){});
             // console.log($scope);
         }
+    })
+    .controller('counterController', function ($scope, $interval) {
+        // Increment Counter in seconds
+        $scope.counterTime = 0;
+        var incrementCounter = function() {
+            $scope.counterTime++;
+        }
+        $interval(incrementCounter, 1000);
+
+        // Reset Counter
+        $scope.resetCounterTime = function() {
+            $scope.counterTime = 0;
+        }
+        // console.log('ok');
+        // $scope.showUserWeights = function(){
+        //     var getString = 'php/service.php?service=weightsList&user_id=' + $scope.userId;
+        //     $http.get(getString, {cache: true}).success(function(data){
+        //         $scope.exercises = data;
+        //     });
+        // }
+        // $scope.showUserWeights();
     });
 
 var weightsFilters = angular.module('weightsFilters', []);
@@ -93,5 +114,22 @@ weightsFilters
         // Filter for stripping all spaces from strings
         return function(input){
             return input.replace(/ /g, "");
+        }
+    });
+weightsFilters
+    .filter('sectominsec', function(){
+        // Filter seconds to min sec (i.e. 65 to 1:05)
+        return function(input){
+            var minutes,
+                seconds,
+                minSecFormat;
+            minutes = Math.floor(input / 60);
+            console.log(minutes);
+            seconds = (input - minutes) % 60;
+            if(seconds < 10) {
+                seconds = "0" + seconds;
+            }
+            minSecFormat = minutes + ":" + seconds;
+            return minSecFormat;
         }
     });
