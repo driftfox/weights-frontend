@@ -19,7 +19,6 @@ weightsControllers
 
         $scope.updateDate = function(){
             $scope.todaysDate = $scope.todaysYear + "-" + $scope.todaysMonth + "-" + $scope.todaysDay;
-            // console.log($scope.todaysDate);
         }
 
         $scope.showGraph = function(userId, exerciseId, exerciseName){
@@ -33,8 +32,6 @@ weightsControllers
                     chartLabels.push(entry.date);
                     chartData.push(parseInt(entry.weight));
                 });
-                // console.log(chartLabels);
-                // console.log(chartData);
 
                 //Get the context of the canvas element we want to select
                 $('body').addClass('show-chart');
@@ -72,18 +69,13 @@ weightsControllers
         }
 
         // $scope.setToPreviousWeight = function(previousWeight, weight, $scope){
-            // console.log(weight);
-            // console.log(previousWeight);
             // // $scope.weight = 10;
-            // console.log($scope);
-            // console.log($scope.weight);
         // }
 
         $scope.addSingleExercise = function(userId, exerciseId, weight, date){
             // Add exercise to db as soon as user chooses weight in dropdown
             var getString = 'php/service.php?service=addWeight&user_id=' + userId + '&weight_id=' + exerciseId + '&weight=' + weight + '&date=' + date;
             $http.get(getString, {cache : false}).success(function(data){});
-            // console.log($scope);
         }
     })
     .controller('counterController', function ($scope, $interval) {
@@ -98,14 +90,42 @@ weightsControllers
         $scope.resetCounterTime = function() {
             $scope.counterTime = 0;
         }
-        // console.log('ok');
-        // $scope.showUserWeights = function(){
-        //     var getString = 'php/service.php?service=weightsList&user_id=' + $scope.userId;
-        //     $http.get(getString, {cache: true}).success(function(data){
-        //         $scope.exercises = data;
-        //     });
-        // }
-        // $scope.showUserWeights();
+
+        // Set Count
+        $scope.setCount = [
+            {
+                'number' : 1,
+                'active' : false
+            },
+            {
+                'number' : 2,
+                'active' : false
+            },
+            {
+                'number' : 3,
+                'active' : false
+            },
+            {
+                'number' : 4,
+                'active' : false
+            },
+            {
+                'number' : 5,
+                'active' : false
+            },
+        ]
+        $scope.setSetCount = function(index) {
+            $scope.resetCounterTime();
+            var setCountLength = $scope.setCount.length;
+            for (var i = $scope.setCount.length - 1; i >= 0; i--) {
+                if(i > index || index === -1) {
+                    $scope.setCount[i].active = false;
+                } else {
+                    $scope.setCount[i].active = true;
+                }
+                console.log($scope.setCount[i].active);
+            }
+        }
     });
 
 var weightsFilters = angular.module('weightsFilters', []);
@@ -124,7 +144,6 @@ weightsFilters
                 seconds,
                 minSecFormat;
             minutes = Math.floor(input / 60);
-            console.log(minutes);
             seconds = (input - minutes) % 60;
             if(seconds < 10) {
                 seconds = "0" + seconds;

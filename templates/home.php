@@ -110,16 +110,12 @@ for($i=0;$i<=500;$i+=5){
     </table>
 </form>
 
-<div id="chartContainer">
-</div> <!-- #chartContainer -->
-
 <div id="workoutCounter" ng-controller="counterController">
-    <div class="clock"  ng-click="resetCounterTime()">{{counterTime|sectominsec}}</div>
+    <div class="clock"  ng-click="resetCounterTime();setSetCount(-1)">{{counterTime|sectominsec}}</div>
     <div class="btn-group">
-        <button type="button" class="btn btn-default">1</button>
-        <button type="button" class="btn btn-default">2</button>
-        <button type="button" class="btn btn-default">3</button>
-        <button type="button" class="btn btn-default">4</button>
-        <button type="button" class="btn btn-default">5</button>
+        <button type="button" ng-class="{true:'active'}[set.active]" class="btn btn-default" ng-repeat="set in setCount" ng-click="setSetCount($index)">{{set.number}}</button>
     </div><!-- .btn-group -->
 </div> 
+
+<div id="chartContainer">
+</div> <!-- #chartContainer -->
