@@ -111,7 +111,7 @@ for($i=0;$i<=500;$i+=5){
 </form>
 
 <div id="workoutCounter" ng-controller="counterController">
-    <div class="clock"  ng-click="resetCounterTime();setSetCount(-1)">{{counterTime|sectominsec}}</div>
+    <div class="clock"  ng-click="resetCounterTime();setSetCount(-1)">{{counterTime | date:'m:ss'}}</div>
     <div class="btn-group">
         <button type="button" ng-class="{true:'active'}[set.active]" class="btn btn-default" ng-repeat="set in setCount" ng-click="setSetCount($index)">{{set.number}}</button>
     </div><!-- .btn-group -->

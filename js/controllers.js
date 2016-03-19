@@ -81,14 +81,17 @@ weightsControllers
     .controller('counterController', function ($scope, $interval) {
         // Increment Counter in seconds
         $scope.counterTime = 0;
-        var incrementCounter = function() {
-            $scope.counterTime++;
+        $scope.counterStartTime = new Date();
+        var updateTimer = function() {
+            var currentTime = new Date();
+            $scope.counterTime = new Date(currentTime - $scope.counterStartTime);
         }
-        $interval(incrementCounter, 1000);
+        $interval(updateTimer, 250);
 
         // Reset Counter
         $scope.resetCounterTime = function() {
-            $scope.counterTime = 0;
+            $scope.counterStartTime = new Date();
+            updateTimer();
         }
 
         // Set Count
@@ -123,7 +126,6 @@ weightsControllers
                 } else {
                     $scope.setCount[i].active = true;
                 }
-                console.log($scope.setCount[i].active);
             }
         }
     });
@@ -134,21 +136,5 @@ weightsFilters
         // Filter for stripping all spaces from strings
         return function(input){
             return input.replace(/ /g, "");
-        }
-    });
-weightsFilters
-    .filter('sectominsec', function(){
-        // Filter seconds to min sec (i.e. 65 to 1:05)
-        return function(input){
-            var minutes,
-                seconds,
-                minSecFormat;
-            minutes = Math.floor(input / 60);
-            seconds = (input - minutes) % 60;
-            if(seconds < 10) {
-                seconds = "0" + seconds;
-            }
-            minSecFormat = minutes + ":" + seconds;
-            return minSecFormat;
         }
     });
