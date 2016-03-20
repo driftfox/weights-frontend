@@ -19,6 +19,20 @@ angular.module('weightsApp')
         $scope.todaysMonth = $filter('date')(date, "MM");
         $scope.todaysDate = $filter('date')(date, "yyyy-MM-dd");
         $scope.weightAmounts = [];
+        $scope.userList = [
+        	{
+    			'id' : 2,
+    			'name' : 'Russell'
+        	},
+        	{
+    			'id' : 3,
+    			'name' : 'Tyler'
+        	},
+        	{
+    			'id' : 1,
+    			'name' : 'Andrew'
+        	}
+        ];
 
         // Populate weightAmounts array
         for (var i = 0; i <= 100; i++) {

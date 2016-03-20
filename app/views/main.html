@@ -2,11 +2,12 @@
 <form id="weightsForm" ng-controller="WeightListCtrl" class="col-md-6 col-md-offset-3">
 
 	<div class="select-user">
-	    <select class="user-id form-control" ng-model="userId" ng-change="showUserWeights()">
-	        <option value="2">Russell</option>
-	        <option value="3">Tyler</option>
-	        <option value="1">Andrew</option>
-	    </select>
+	    <select class="user-id form-control" ng-options="user.id as user.name for user in userList" ng-model="userId" ng-change="showUserWeights()">
+<!-- 	        <option value="number:2">Russell</option>
+	        <option value="number:3">Tyler</option>
+	        <option value="number:1">Andrew</option>
+ -->
+ 	    </select>
 	</div><!-- .select-user -->
 
     <table id="weightTable" cellspacing="0" cellpadding="0" border="0" class="table">
