@@ -1,7 +1,6 @@
-/nbproject/private/
-.gitignore
-nbproject/project.properties
-nbproject/project.xml
-__*
-.project
-php/dbConfig.php
+/node_modules
+/dist
+/.tmp
+/.sass-cache
+/bower_components
+sublime-project.sublime-workspace
