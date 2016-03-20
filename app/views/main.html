@@ -1,14 +1,15 @@
-<form id="weightsForm" ng-controller="WeightListCtrl">
+<div class="row">
+<form id="weightsForm" ng-controller="WeightListCtrl" class="col-md-6 col-md-offset-3">
 
 	<div class="select-user">
-	    <select class="user-id" ng-model="userId" ng-change="showUserWeights()">
+	    <select class="user-id form-control" ng-model="userId" ng-change="showUserWeights()">
 	        <option value="2">Russell</option>
 	        <option value="3">Tyler</option>
 	        <option value="1">Andrew</option>
 	    </select>
 	</div><!-- .select-user -->
 
-    <table id="weightTable" cellspacing="0" cellpadding="0" border="0">
+    <table id="weightTable" cellspacing="0" cellpadding="0" border="0" class="table">
         <thead>
             <tr>
                 <th class="lift-name">Exercise</th>
@@ -26,14 +27,14 @@
                     <div class="reps">{{exercise.repetitions}}</div>
                 </td>
                 <td class="weight-dropdown">
-                    <select id="ex{{exercise.name|noSpaces}}" ng-options="amount for amount in weightAmounts" ng-model="weight" ng-change="addSingleExercise(userId, exercise.id, weight, todaysDate)">
+                    <select id="ex{{exercise.name|noSpaces}}" class="form-control" ng-options="amount for amount in weightAmounts" ng-model="weight" ng-change="addSingleExercise(userId, exercise.id, weight, todaysDate)">
                     </select>
                 </td>
             </tr>
             <tr class="date">
-                <td colspan="3">
+                <td colspan="3" class="form-inline">
                     <!-- <span class="date">Date:</span> -->
-                    <select id="dateMonth" ng-model="todaysMonth" ng-change="updateDate()">
+                    <select id="dateMonth" class="form-control" ng-model="todaysMonth" ng-change="updateDate()">
                         <option value="01">January</option>
                         <option value="02">February</option>
                         <option value="03">March</option>
@@ -47,7 +48,7 @@
                         <option value="11">November</option>
                         <option value="12">December</option>
                     </select>
-                    <select id="dateDay" ng-model="todaysDay" ng-change="updateDate()">
+                    <select id="dateDay" class="form-control" ng-model="todaysDay" ng-change="updateDate()">
                         <option value="01">01</option>
                         <option value="02">02</option>
                         <option value="03">03</option>
@@ -80,7 +81,7 @@
                         <option value="30">30</option>
                         <option value="31">31</option>
                     </select>
-                    <select id="dateYear" ng-model="todaysYear" ng-change="updateDate()">
+                    <select id="dateYear" class="form-control" ng-model="todaysYear" ng-change="updateDate()">
                         <option value="2010">2010</option>
                         <option value="2011">2011</option>
                         <option value="2012">2012</option>
@@ -98,11 +99,12 @@
         </tbody>
     </table>
 </form>
+</div><!-- .row -->
 
 <div id="workoutCounter" ng-controller="WorkoutCounterCtrl">
     <div class="clock"  ng-click="resetCounterTime();setSetCount(-1)">{{counterTime | date:'m:ss'}}</div>
     <div class="btn-group">
-        <button type="button" ng-class="{true:'active'}[set.active]" class="btn btn-default" ng-repeat="set in setCount" ng-click="setSetCount($index)">{{set.number}}</button>
+        <button type="button" ng-class="{true:'active'}[set.active]" class="btn btn-default btn-lg" ng-repeat="set in setCount" ng-click="setSetCount($index)">{{set.number}}</button>
     </div><!-- .btn-group -->
 </div>
 

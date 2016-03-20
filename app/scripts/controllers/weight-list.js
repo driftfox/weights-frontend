@@ -26,7 +26,7 @@ angular.module('weightsApp')
         };
 
         $scope.showUserWeights = function(){
-            var getString = '/php/service.php?service=weightsList&user_id=' + $scope.userId;
+            var getString = 'http://localhost/weights/php/service.php?service=weightsList&user_id=' + $scope.userId;
             $http.get(getString, {cache: true}).success(function(data){
                 $scope.exercises = data;
             });
@@ -38,7 +38,7 @@ angular.module('weightsApp')
         }
 
         $scope.showGraph = function(userId, exerciseId, exerciseName){
-            var getString = '/php/service.php?service=weightHistory&user_id=' + userId + '&weight_id=' + exerciseId;
+            var getString = 'http://localhost/weights/php/service.php?service=weightHistory&user_id=' + userId + '&weight_id=' + exerciseId;
             $http.get(getString, {cache: false}).success(function(data){
                 // Prepare data for chart.js
                 var chartLabels = [],
@@ -90,7 +90,7 @@ angular.module('weightsApp')
 
         $scope.addSingleExercise = function(userId, exerciseId, weight, date){
             // Add exercise to db as soon as user chooses weight in dropdown
-            var getString = '/php/service.php?service=addWeight&user_id=' + userId + '&weight_id=' + exerciseId + '&weight=' + weight + '&date=' + date;
+            var getString = 'http://localhost/weights/php/service.php?service=addWeight&user_id=' + userId + '&weight_id=' + exerciseId + '&weight=' + weight + '&date=' + date;
             $http.get(getString, {cache : false}).success(function(data){});
         }
 
