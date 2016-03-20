@@ -18,9 +18,12 @@ body{
 #weightTable tr .prev-weight-and-reps{text-align: right;}
 #weightTable tr .second-time{box-shadow: 0 0 3px #000000 inset;}
 #weightTable tr .weight-dropdown{text-align: right;}
-#weightTable tr td select{height: 3em;}
-#weightTable tr td div.lift-name{font-size: 1.5em;}
-#weightTable tr td div.previous-weight{font-size: 1.8em;margin-bottom: -7px;}
+#weightTable tr select{height: 3em;}
+#weightTable tr .lift-name{
+	font-size: 1.5em;
+	cursor: pointer;
+}
+#weightTable tr .previous-weight{font-size: 1.8em;margin-bottom: -7px;}
 #weightTable tr.date{text-align: center;}
 #weightTable tr.date select{margin-bottom: 0.5em;}
 /* Charts */

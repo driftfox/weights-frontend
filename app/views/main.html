@@ -20,7 +20,7 @@
         <tbody>
             <tr ng-repeat="exercise in exercises" class="day-{{exercise.type}}">
                 <td class="exercise">
-                    <div class="lift-name" ng-click="showGraph(exercise.userData.user_id, exercise.id, exercise.name)">{{exercise.name}}</div>
+                    <span class="lift-name" ng-click="showGraph(exercise.userData.user_id, exercise.id, exercise.name)">{{exercise.name}}</span>
                 </td>
                 <td class="prev-weight-and-reps">
                     <div class="previous-weight">{{exercise.userData.weight}}</div>
