@@ -1,9 +1,0 @@
-<?php
-// Save this file as dbConfig.php in the /php directory
-$__dbConfig = array(
-	"username" => "",
-	"hostname" => "",
-	"password" => "",
-	"dbName" => ""
-	);
-?>
