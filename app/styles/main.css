@@ -6,10 +6,12 @@ body{
 
 
 /* Select User */
+.select-user button,
 .select-user select{
 	width: 100%;
 	height: 3em;
 }
+
 /* Weights Form */
 #weightsForm {
 	padding-top: 20px;
@@ -26,6 +28,8 @@ body{
 #weightTable tr .previous-weight{font-size: 1.8em;margin-bottom: -7px;}
 #weightTable tr.date{text-align: center;}
 #weightTable tr.date select{margin-bottom: 0.5em;}
+#weightTable.show-b-days tr.day-A,
+#weightTable.show-a-days tr.day-B{display: none;}
 /* Charts */
 #chartContainer{top: 0;left: 0;width: 100%;height: 100%;display: none;background: #fff;}
 body.show-chart{overflow: hidden;}

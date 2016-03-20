@@ -13,7 +13,7 @@ angular.module('weightsApp')
         var date = new Date();
         $scope.userId = 2;
         $scope.weight = 0;
-        $scope.dayVariation = 0;
+        $scope.workoutVariation = 1;
         $scope.todaysDay = $filter('date')(date, "dd");
         $scope.todaysYear = $filter('date')(date, "yyyy");
         $scope.todaysMonth = $filter('date')(date, "MM");
@@ -39,6 +39,7 @@ angular.module('weightsApp')
         	$scope.weightAmounts.push(i * 5);
         };
 
+        // Get list of weights for a user
         $scope.showUserWeights = function(){
             var getString = 'http://localhost/weights/php/service.php?service=weightsList&user_id=' + $scope.userId;
             $http.get(getString, {cache: true}).success(function(data){
@@ -47,10 +48,12 @@ angular.module('weightsApp')
         }
         $scope.showUserWeights();
 
+        // Update the date based on the user selected date
         $scope.updateDate = function(){
             $scope.todaysDate = $scope.todaysYear + "-" + $scope.todaysMonth + "-" + $scope.todaysDay;
         }
 
+        // Show the full screen graph if weight history
         $scope.showGraph = function(userId, exerciseId, exerciseName){
             var getString = 'http://localhost/weights/php/service.php?service=weightHistory&user_id=' + userId + '&weight_id=' + exerciseId;
             $http.get(getString, {cache: false}).success(function(data){
@@ -102,8 +105,17 @@ angular.module('weightsApp')
             // // $scope.weight = 10;
         // }
 
+        // Quick and dirty variation toggle fuction
+        $scope.toggleWorkoutVariation = function(){
+        	if($scope.workoutVariation === 1) {
+        		$scope.workoutVariation = 2;
+        	} else {
+        		$scope.workoutVariation = 1;
+        	}
+        }
+
+        // Add exercise to db as soon as user chooses weight in dropdown
         $scope.addSingleExercise = function(userId, exerciseId, weight, date){
-            // Add exercise to db as soon as user chooses weight in dropdown
             var getString = 'http://localhost/weights/php/service.php?service=addWeight&user_id=' + userId + '&weight_id=' + exerciseId + '&weight=' + weight + '&date=' + date;
             $http.get(getString, {cache : false}).success(function(data){});
         }
